@@ -91,17 +91,6 @@ main {
   font-size: 14px;
 }
 
-/* container resultados */
-.result-container {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  gap: 64px;
-}
-.image-result {
-  display: none;
-}
-
 /* buttons */
 .buttons {
   display: flex;
@@ -132,6 +121,15 @@ main {
   color: var(--primary-color);
 }
 
+/* container resultados */
+.result-container {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+.image-result {
+  display: none;
+}
 /* resultado */
 .result {
   padding: 32px;
@@ -176,6 +174,8 @@ main {
 
 @media (min-width: 1200px) {
   body {
+    max-width: 1440px;
+    margin: 0 auto;
     padding: 40px;
   }
   header {
