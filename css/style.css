@@ -67,7 +67,6 @@ main {
   justify-content: space-between;
 }
 .input-container {
-  margin-bottom: 20px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -99,8 +98,19 @@ main {
   gap: 64px;
 }
 
+.image-result {
+  display: none;
+}
+
 /* buttons */
 .buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 64px;
+}
+
+.btn-container {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -116,6 +126,7 @@ main {
   text-transform: uppercase;
   box-shadow: 1px 1px 0 1px rgba(0, 0, 0, 1);
   width: 100%;
+  cursor: pointer;
 }
 
 .btn.decript {
@@ -141,15 +152,58 @@ main {
   background-color: var(--primary-color);
   color: var(--primary-text);
   border: 2px solid var(--bg-color);
+  display: none;
 }
 
 @media (min-width: 720px) {
   body {
     padding: 75px 40px 40px 40px;
   }
+  header {
+    margin-bottom: 116px;
+  }
+  .logo {
+    width: 160px;
+  }
   .buttons {
     display: flex;
+    gap: 16px;
+  }
+  .btn-container {
     flex-direction: row;
-    gap: 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  body {
+    padding: 40px;
+  }
+  header {
+    margin-bottom: 80px;
+  }
+  main {
+    flex-direction: row;
+    gap: 80px;
+    height: 80vh;
+  }
+  .input-container {
+    width: 100%;
+    padding-left: 120px;
+    justify-content: space-between;
+  }
+  .input-text {
+    height: 100%;
+  }
+  .buttons {
+    margin-bottom: 0;
+  }
+  .result {
+    justify-content: center;
+    width: 400px;
+    height: 100%;
+  }
+  .image-result {
+    display: block;
+    object-fit: cover;
   }
 }
