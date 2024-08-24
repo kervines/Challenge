@@ -1,0 +1,55 @@
+:root {
+  --primary-color: #f6f6f6;
+  --secondary-color: #323232;
+  --bg-color: #323232;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--primary-color);
+  background-color: var(--bg-color);
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo {
+  width: 120px;
+}
+
+/* menu hamburger */
+.menu {
+  width: 30px;
+  height: 2px;
+  border-radius: 20px;
+  background-color: var(--primary-color);
+  position: relative;
+}
+.menu::after {
+  content: '';
+  width: 30px;
+  height: 2px;
+  border-radius: 20px;
+  background-color: var(--primary-color);
+  position: absolute;
+  top: 9px;
+}
+.menu::before {
+  content: '';
+  width: 30px;
+  height: 2px;
+  border-radius: 20px;
+  background-color: var(--primary-color);
+  position: absolute;
+  bottom: 9px;
+}
