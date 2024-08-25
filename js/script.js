@@ -1,17 +1,7 @@
 inputTextEl = document.querySelector('.input-text');
 criptButtonEl = document.querySelector('.cript');
 decriptButtonEl = document.querySelector('.decript');
-copyButtonEl = document.querySelector('.copy');
 resultEl = document.querySelector('.result');
-
-/*
-As "chaves" de criptografia que utilizaremos são:
-A letra "e" é convertida para "enter"
-A letra "i" é convertida para "imes"
-A letra "a" é convertida para "ai"
-A letra "o" é convertida para "ober"
-A letra "u" é convertida para "ufat"
-*/
 
 const criptMessage = (msg) => {
   const word = msg.value;
@@ -37,14 +27,21 @@ const descriptMessage = (msg) => {
     .split(' ')
     .map((word) => {
       return word
-        .replace('enter', 'e')
-        .replace('ai', 'a')
-        .replace('enter', 'i')
-        .replace('ober', 'o')
-        .replace('ufat', 'u');
+        .replace(/enter/g, 'e')
+        .replace(/ai/g, 'a')
+        .replace(/imes/g, 'i')
+        .replace(/ober/g, 'o')
+        .replace(/ufat/g, 'u');
     });
   const msgDecript = arrWord.join(' ');
   return msgDecript;
+};
+
+const copyText = () => {
+  const p = document.querySelector('.message');
+  p.select();
+  p.setSelectionRange(0, 99999);
+  document.execCommand('copy');
 };
 
 const renderMessageCript = () => {
@@ -52,9 +49,13 @@ const renderMessageCript = () => {
     alert('Digite sua mensagem!');
   } else {
     resultEl.style.justifyContent = 'space-between';
-    resultEl.innerHTML = `<p class='message'>${criptMessage(inputTextEl)}</p>
+    resultEl.innerHTML = `<textarea class='message'>${criptMessage(
+      inputTextEl,
+    )}</textarea>
     <button class="btn copy">Copiar</button>
     `;
+    copyButtonEl = document.querySelector('.copy');
+    copyButtonEl.addEventListener('click', copyText);
   }
 };
 const renderMessageDecript = () => {
@@ -62,9 +63,13 @@ const renderMessageDecript = () => {
     alert('Digite sua mensagem!');
   } else {
     resultEl.style.justifyContent = 'space-between';
-    resultEl.innerHTML = `<p class='message'>${descriptMessage(inputTextEl)}</p>
+    resultEl.innerHTML = `<textarea class='message'>${descriptMessage(
+      inputTextEl,
+    )}</textarea>
     <button class="btn copy">Copiar</button>
     `;
+    copyButtonEl = document.querySelector('.copy');
+    copyButtonEl.addEventListener('click', copyText);
   }
 };
 
