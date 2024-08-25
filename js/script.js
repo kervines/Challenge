@@ -39,9 +39,14 @@ const descriptMessage = (msg) => {
 
 const copyText = () => {
   const p = document.querySelector('.message');
-  p.select();
-  p.setSelectionRange(0, 99999);
-  document.execCommand('copy');
+  navigator.clipboard
+    .writeText(p.value)
+    .then(() => {
+      alert('Texto copiado');
+    })
+    .catch((err) => {
+      console.error('Erro ao copiar: ', err);
+    });
 };
 
 const renderMessageCript = () => {
@@ -49,13 +54,14 @@ const renderMessageCript = () => {
     alert('Digite sua mensagem!');
   } else {
     resultEl.style.justifyContent = 'space-between';
-    resultEl.innerHTML = `<textarea class='message'>${criptMessage(
+    resultEl.innerHTML = `<textarea class='message' readonly>${criptMessage(
       inputTextEl,
     )}</textarea>
     <button class="btn copy">Copiar</button>
     `;
     copyButtonEl = document.querySelector('.copy');
     copyButtonEl.addEventListener('click', copyText);
+    inputTextEl.value = '';
   }
 };
 const renderMessageDecript = () => {
@@ -70,6 +76,7 @@ const renderMessageDecript = () => {
     `;
     copyButtonEl = document.querySelector('.copy');
     copyButtonEl.addEventListener('click', copyText);
+    inputTextEl.value = '';
   }
 };
 
